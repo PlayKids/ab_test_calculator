@@ -1,5 +1,4 @@
 import streamlit as st
-import statsmodels.stats.api as sms
 from statsmodels.stats.power import zt_ind_solve_power
 
 
