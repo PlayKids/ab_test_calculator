@@ -1,6 +1,7 @@
 import streamlit as st
 import statsmodels.stats.api as sms
 from statsmodels.stats.power import zt_ind_solve_power
+from math import comb
 
 
 def sample_size_proportions(baseline_rate,
@@ -14,7 +15,8 @@ def sample_size_proportions(baseline_rate,
     practical_significance = minimum_detectable_effect / 100.
     confidence_level = 1 - (float(confidence)/100.)
     if variant_number > 2:
-        confidence_level = confidence_level / variant_number
+        combinations = comb(variant_number, 2)
+        confidence_level = confidence_level / combinations
     sensitivity = test_power / 100.
     baseline_rate = baseline_rate / 100.
     lift = practical_significance*baseline_rate if effect_is_relative else practical_significance

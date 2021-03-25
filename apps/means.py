@@ -1,5 +1,6 @@
 import streamlit as st
 from statsmodels.stats.power import zt_ind_solve_power
+from math import comb
 
 
 def sample_size_means(baseline_metric,
@@ -12,7 +13,8 @@ def sample_size_means(baseline_metric,
     
     confidence_level = 1 - (float(confidence)/100.)
     if variant_number > 2:
-        confidence_level = confidence_level / variant_number
+        combinations = comb(variant_number, 2)
+        confidence_level = confidence_level / combinations
 
     sensitivity = test_power / 100.
     baseline_metric = baseline_metric
