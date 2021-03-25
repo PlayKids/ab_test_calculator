@@ -37,7 +37,8 @@ def app():
     variant_number = st.selectbox("Número de variantes (incluindo controle): ", options=range(2, 6))
     baseline_rate = st.number_input("Proporção atual (em %): ", 0., 100., 50.)
     minimum_detectable_effect = st.number_input("Efeito mínimo que deseja detectar no teste (em %): ", 0., 100., 5.)
-    effect_is_relative = st.selectbox("O efeito mínimo é relativo?", options=[True, False])
+    effect_type = st.selectbox("Tipo de efeito: ", options=["Relativo", "Absoluto"])
+    effect_is_relative = True if effect_type == "Relativo" else False
     confidence = st.number_input("Grau de confiança do teste (em %): ", 90., 100., 95.)
     test_power = st.number_input("Poder do teste (em %): ", 80., 100., 80.)
 
